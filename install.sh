@@ -167,18 +167,21 @@ if [ ! `which ansible` ]; then
         apt-get update -qq
         apt-get install ansible -y -qq
 
-    elif [ $OS == 'centos' ] || [ $OS == 'redhat' ] || [ $OS == 'fedora'  ]; then
+    elif [ $OS == 'centos' ] || [ $OS == 'rhel' ] || [ $OS == 'redhat' ] || [ $OS == 'fedora'  ]; then
 
         yum install git -y
         yum install epel-release -y
         yum install ansible -y
+    else
+        echo "OS not known or action not understood."
+        exit 1
     fi
-
     echo $LINE
 
 else
     echo " Ansible already installed. Skipping installation."
     echo $LINE
+
 fi
 
 
